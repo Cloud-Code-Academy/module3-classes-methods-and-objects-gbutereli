@@ -39,18 +39,25 @@ public with sharing class ClassesObjectsMethods {
      * @return A list containing the length of the string, a substring of the string, and the string in lower case.
      */
     public static List<String> practiceStringMethods() {
-        // Initialize a String with 'Hello, Salesforce!'
-        
-        // Get the length of the String        
-        // Get a substring of the String of the first 5 characters
-        // Convert the String to lower case
-        
-        // Return the list with the string data
-        // In the first position add the string length
-        // In the second position add the substring
-        // In the third position add the string in lower case
-
-        return null; // Replace null with the variable you used to store the result
+         // Initialize a String with 'Hello, Salesforce!'
+         String hello = 'Hello, Salesforce!';
+         // Get the length of the String
+         Integer helloLength = hello.length();        
+         // Get a substring of the String of the first 5 characters
+         String helloFirstChar = hello.substring(0,5);
+         // Convert the String to lower case
+         String helloLowerCase = hello.toLowerCase();
+         // Return the list with the string data
+         // In the first position add the string length
+         // In the second position add the substring
+         // In the third position add the string in lower case
+         List<String>  practiceStringMethods = new List<String>();
+         practiceStringMethods.add(String.valueOf(helloLength));
+         practiceStringMethods.add(helloFirstChar);
+         practiceStringMethods.add(helloLowerCase);
+         
+ 
+         return practiceStringMethods; 
     }
 
     /**
@@ -62,14 +69,18 @@ public with sharing class ClassesObjectsMethods {
      */
     public static List<Boolean> checkStringContent(String input) {
         // Initialize a list to store the results
-        
+        List<Boolean> checkStringContent = new List<Boolean>();
         // Check if the string starts with 'Sales'
-        
+        Boolean startCheck = input.startsWith('Sales');
+        checkStringContent.add(startCheck);
         // Check if the string ends with 'Force'
-        
+        Boolean endCheck = input.endsWith('Force');
+        checkStringContent.add(endCheck);
         // Check if the string contains 'Awesome'
-        
-        return null; // Replace null with the variable you used to store the result
+        Boolean containsCheck = input.contains('Awesome');
+        checkStringContent.add(containsCheck);
+
+        return  checkStringContent; 
     }
 
     /**
@@ -81,15 +92,24 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String removeDuplicateWords(String sentence) {
         // Split the sentence into words
+        List<String> splitSentence = sentence.split(' ');
 
         // Create a set to store the unique words
+        Set<String> uniqueWord = new Set<String>();
 
         // Add each word to the set
+        uniqueWord.addAll(splitSentence);
 
         // Join the unique words back into a sentence
+        List<String> wordList = new  List<String>();
+        for (String word : uniqueWord){
+            wordList.add(word);
+        }
+
+        String newSentence = String.join(wordList,' ');
 
         // Return the sentence with unique words
-        return null; // Replace null with the variable you used to store the result
+        return newSentence; 
     }
 
     /**
@@ -102,16 +122,19 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer countVowels(String str) {
         // Initialize the result Integer
+        Integer countVowels = 0;
+        List<String> vowels = new List<String>{'a', 'e', 'i', 'o', 'u'};
+        List<String> wordSplitted = str.split('');
 
-        /*
-        for () {
-            // get individual characters from the string - hint use substring or split
-            // check if the character is a vowel
-            // if it is a vowel, increment the result Integer
+        for(String letter : wordSplitted){
+            if(vowels.contains(letter)){
+                countVowels += 1;
+            }else{
+                continue;
+            }
         }
-        */
 
-        return null; // Replace null with the variable you used to store the result
+        return countVowels; 
     }
 
     /**
@@ -124,18 +147,20 @@ public with sharing class ClassesObjectsMethods {
     public static String findTheScientist() {
         // The list of scientists' names
         List<String> scientistNames = new List<String>{'Tim Berners-Lee', 'Alan Turing', 'Grace Hopper', 'Donald Knuth', 'Guido van Rossum', 'Ken Thompson', 'Stephen Hawking'};
+        String scientistFound = '';
+        String letterToMatch = 'g';
+        
 
-        // The variable to store the concatenated string
-
-        // Loop through the list of scientists' names
-
-            // If the name doesn't contain the letter 'G', skip this iteration
-
-            // Add the name to the result string, followed by a comma
-
-        // Remove the last comma from the result string
-
-        return null; // Replace null with the variable you used to store the result
+        for(String scientist : scientistNames){
+            if(scientist.toLowerCase().contains(letterToMatch)){
+                scientistFound += scientist + ',';
+            }else {
+                continue;
+            }
+        }
+        String scientistWithG = scientistFound.removeEnd(',');
+        return scientistWithG;
+         
     }
 
     /**
