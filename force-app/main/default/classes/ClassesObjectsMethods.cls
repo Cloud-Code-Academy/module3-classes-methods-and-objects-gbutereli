@@ -173,11 +173,14 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Double calculateDifferenceOfSquares(Double a, Double b) {
         // Square the input numbers using the Math.pow() function
+        Double firstPower = Math.pow(a,2);
+        Double secondPower = Math.pow(b,2);
 
         // Calculate the absolute difference using Math.abs() function
+        Double calculateDifferenceOfSquares = Math.abs((firstPower - secondPower));
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return calculateDifferenceOfSquares; 
     }
 
     /**
@@ -188,9 +191,13 @@ public with sharing class ClassesObjectsMethods {
      */
     public static Integer generateRandomNumber() {
         // Use Math class to generate number between 50 and 100
+        Integer randomThresholdUpper = 100;
+        Integer randomThresholdLower = 50;
 
+        Integer randomRange = (Math.random()*(randomThresholdUpper - randomThresholdLower) + randomThresholdLower).intValue();
+    
         // Return the random integer
-        return null; // Replace null with the variable you used to store the result
+        return randomRange; 
     }
 
     /**
@@ -201,11 +208,12 @@ public with sharing class ClassesObjectsMethods {
      */
     public static String getCurrentDate() {
         // Get the todays date
-
+        Date todayDate = Date.today();
         // Format the current date
+        String formatDate = todayDate.format();
 
         // Return the result
-        return null; // Replace null with the variable you used to store the result
+        return formatDate; // Replace null with the variable you used to store the result
     }
 
     /**
@@ -217,13 +225,17 @@ public with sharing class ClassesObjectsMethods {
     public static String getDayOfWeek(DateTime dt) {
         // Define a map of day of the week as a key and day number as the value
         // Monday = 1, Tuesday = 2, etc.
+        Map<String,Integer> numberByWeekdays = new Map<String,Integer>{'Monday' => 1, 'Tuesday' => 2, 'Wednesday' => 3, 'Thursday' =>4, 'Friday' => 5, 'Saturday' => 6, 'Sunday' =>7};
 
         // Get the day name using .format('EEEE');
+        String dtInString = dt.format('EEEE');
 
         // Get the day number from the map using the day name
+        Integer dayNumber = numberByWeekdays.get(dtInString);
 
         // Return the result as a string
-        return null; // Replace null with the variable you used to store the result
+        return String.valueOf(dayNumber);
+      
     }
 
 
@@ -239,8 +251,16 @@ public with sharing class ClassesObjectsMethods {
     public static Integer calculateYearDifference(Date d1, Date d2) {
 
         // Subtract the difference in years
-
-        return null; // Replace null with the variable you used to store the result
+       
+        if(d1 == null || d2 == null){
+            return null;
+        }else{
+            Integer d1Year = d1.year();
+            Integer d2Year = d2.year();
+    
+            Integer yearDifference = d2Year - d1Year;
+            return yearDifference; 
+        } 
     }
 
     /**
